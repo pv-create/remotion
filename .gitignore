@@ -1,0 +1,11 @@
+node_modules/
+out/
+.DS_Store
+measure-out/
+
+# оригиналы HEVC внутри фич и H.264-прокси — сотни мегабайт, живут только локально
+src/features/*/source/
+public/episodes/
+public/broll/
+footage/*
+!footage/КАК_СКИДЫВАТЬ.md

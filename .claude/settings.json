@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ffmpeg *)",
+      "Bash(ffprobe *)",
+      "Bash(npm run *)",
+      "Bash(npx remotion *)",
+      "Bash(./scripts/*)",
+      "Bash(node scripts/*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/hooks.mjs\" guard-source",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/hooks.mjs\" require-measure",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/hooks.mjs\" lint",
+            "timeout": 60,
+            "statusMessage": "lint-episode"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/hooks.mjs\" check-render",
+            "timeout": 300,
+            "statusMessage": "check-render"
+          }
+        ]
+      }
+    ]
+  }
+}

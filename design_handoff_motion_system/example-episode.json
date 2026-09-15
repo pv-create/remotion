@@ -1,0 +1,31 @@
+{
+  "slug": "autoscaling",
+  "kicker": "BACKEND ЗА 30 СЕКУНД",
+  "badge": "AWS",
+  "title": "АВТОСКЕЙЛИНГ",
+  "lead": "Система сама добавляет инстансы под нагрузкой и убирает, когда она спадает",
+
+  "hook": {
+    "meter": { "label": "НАГРУЗКА", "from": 78, "to": 100, "tone": "alarm" },
+    "slots": { "total": 3, "activeFrom": 1, "activeTo": 1 },
+    "sticker": { "text": "один не тянет", "tone": "alarm", "tilt": -4 }
+  },
+
+  "event": {
+    "meter": { "label": "НАГРУЗКА", "from": 12, "to": 86, "tone": "accent" },
+    "slots": { "total": 3, "activeFrom": 1, "activeTo": 3, "lag": 8 },
+    "sticker": { "text": "теперь тянет", "tone": "accent", "tilt": 3 }
+  },
+
+  "outro": {
+    "verdict": "ПЛАТИШЬ ЗА ТО, ЧТО РАБОТАЕТ",
+    "next": "ДАЛЬШЕ: ОЧЕРЕДИ"
+  },
+
+  "captions": [
+    { "beat": "hook", "text": "Сервер лежит под нагрузкой" },
+    { "beat": "answer", "text": "Есть решение, и оно автоматическое" },
+    { "beat": "event", "text": "Нагрузка растёт — инстансы догоняют" },
+    { "beat": "outro", "text": "Платишь за то, что работает" }
+  ]
+}

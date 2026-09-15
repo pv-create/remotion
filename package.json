@@ -1,0 +1,31 @@
+{
+  "name": "reels",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "measure": "./scripts/measure.sh",
+    "new": "./scripts/new-episode.sh",
+    "proxy": "./scripts/proxy.sh",
+    "lint": "node scripts/lint-episode.mjs",
+    "check": "node scripts/check-render.mjs",
+    "render:devops": "remotion render Devops out/devops.mp4 --codec=h264 --crf=18",
+    "render:yandex": "remotion render Yandex out/yandex.mp4 --codec=h264 --crf=18",
+    "render:kafka": "remotion render Kafka out/kafka.mp4 --codec=h264 --crf=18",
+    "render:tester": "remotion render Tester out/tester.mp4 --codec=h264 --crf=18",
+    "render:tester_new": "remotion render TesterNew out/tester_new.mp4 --codec=h264 --crf=18",
+    "render:autoscaling": "remotion render Autoscaling out/autoscaling.mp4 --codec=h264 --crf=18",
+    "render:bcend_vospitanie": "remotion render BcendVospitanie out/bcend_vospitanie.mp4 --codec=h264 --crf=18",
+    "render:bulkhead": "remotion render Bulkhead out/bulkhead.mp4 --codec=h264 --crf=18"
+  },
+  "dependencies": {
+    "@remotion/cli": "latest",
+    "@remotion/google-fonts": "latest",
+    "remotion": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "typescript": "^5.9.2"
+  }
+}
