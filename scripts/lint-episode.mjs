@@ -95,10 +95,10 @@ ep.overlays.forEach((o, i) => {
     let size;
     if (m) {
       size = {width: m.size[0], height: m.size[1]};
-      if (o.width > m.maxWidth) E(`${tag}: width ${o.width} > maxWidth ${m.maxWidth} из memes.json — замылит`);
+      if (o.width > m.maxWidth) E(`${tag}: width ${o.width} > maxWidth ${m.maxWidth} из описи (memes.json / logos.json / got.json) — замылит`);
       if (m.bg === 'white') I(`${tag}: у ${base} bg=white — на светлом фоне проверить, что тень читается`);
     } else {
-      W(`${tag}: ${base} нет в memes.json — нет maxWidth, размер взят с файла`);
+      W(`${tag}: ${base} нет в описи (memes.json / logos/logos.json / got/got.json) — нет maxWidth, размер взят с файла`);
       size = probeImage(file);
     }
     const BORDER = 8;
@@ -108,7 +108,11 @@ ep.overlays.forEach((o, i) => {
     const bottom = o.y + h / 2;
     const left = o.x - w / 2;
     const right = o.x + w / 2;
-    if (geomOk) {
+    // под подбородком: целиком между подбородком и субтитрами — лицо не задето
+    const belowChin = top >= g.chin && bottom <= g.subtitleTop;
+    if (geomOk && belowChin) {
+      I(`${tag}: на груди, ${Math.round(top)}–${Math.round(bottom)} между подбородком (${g.chin}) и субтитрами (${g.subtitleTop}) — на рендере проверить, что голова не опускается`);
+    } else if (geomOk) {
       if (bottom > g.eyes) E(`${tag}: нижняя кромка ${Math.round(bottom)} ниже глаз (${g.eyes}) — мем на лице`);
       else if (bottom > g.eyes - 40) W(`${tag}: нижняя кромка ${Math.round(bottom)} впритык к глазам (${g.eyes}), с учётом наклона может задеть`);
       if (bottom > g.subtitleTop) E(`${tag}: заходит на субтитры (${g.subtitleTop})`);
@@ -141,13 +145,28 @@ ep.overlays.forEach((o, i) => {
     else {
       const base = path.basename(o.src);
       const m = sfxIndex.get(base);
-      if (!m) W(`${tag}: ${base} нет в sfx.json — допиши описание и рекомендуемую громкость`);
+      if (!m) W(`${tag}: ${base} нет в sfx.json — допиши описание, hit и рекомендуемую громкость`);
       const dur = m?.duration ?? probeAudioDuration(file);
-      if (o.to - o.from < dur - 0.02) E(`${tag}: окно ${(o.to - o.from).toFixed(2)}с короче звука ${dur.toFixed(2)}с — обрежется, ставь to ≥ ${(o.from + dur).toFixed(2)}`);
+      const start = o.startFrom ?? 0;
+      if (start < 0) E(`${tag}: startFrom < 0`);
+      if (start >= dur) E(`${tag}: startFrom ${start} за концом звука (${dur.toFixed(2)}с)`);
+      const audible = (m?.tail ?? dur) - start; // сколько реально слышно после startFrom
+      if (o.to - o.from < Math.min(audible, dur - start) - 0.02) {
+        W(`${tag}: окно ${(o.to - o.from).toFixed(2)}с короче звука (${audible.toFixed(2)}с после startFrom) — обрежется, если это не задумано ставь to ≥ ${(o.from + audible).toFixed(2)}`);
+      }
       if (typeof o.volume === 'number' && !(o.volume > 0 && o.volume <= 1)) E(`${tag}: volume ${o.volume} вне 0…1`);
+      if (typeof o.volume !== 'number' && m?.volume && Math.abs(m.volume - 0.5) >= 0.2) {
+        W(`${tag}: volume не задан, по умолчанию 0.5, а для ${base} рекомендовано ${m.volume}`);
+      }
       if (typeof o.volume === 'number' && m?.volume && o.volume > m.volume * 1.5) W(`${tag}: volume ${o.volume} заметно выше рекомендованных ${m.volume} из sfx.json — забьёт озвучку`);
-      const hasVisual = ep.overlays.some((v) => v !== o && v.kind !== 'sfx' && Math.abs(v.from - o.from) <= 0.15);
-      if (!hasVisual) I(`${tag}: рядом (±0.15с) нет ни одного визуального оверлея — звук без картинки читается как ошибка дорожки`);
+      // удар должен лечь на from: у разгонов и импактов он не в начале файла
+      const hit = m?.hit ?? 0;
+      const hitAt = o.from + Math.max(0, hit - start);
+      if (hit - start > 0.15) {
+        W(`${tag}: удар у ${base} на ${hit}с файла, а startFrom ${start} — придёт на ${hitAt.toFixed(2)}с, через ${(hit - start).toFixed(2)}с после from. Чтобы ударить на слове: startFrom: ${hit}`);
+      }
+      const hasVisual = ep.overlays.some((v) => v !== o && v.kind !== 'sfx' && Math.abs(v.from - hitAt) <= 0.15);
+      if (!hasVisual) I(`${tag}: на момент удара (${hitAt.toFixed(2)}с, ±0.15с) нет визуального оверлея — звук без картинки читается как брак дорожки`);
     }
   }
 });
@@ -161,6 +180,14 @@ if (regular.length) {
       W(`${e.tag}: ${e.char} с широкими полями стоит на ${e.size} при обычных ${common} — обычно нужно ~×1.3`);
     }
   }
+}
+
+// SFX: минимализм. Не чаще одного на 10 с и не два подряд ближе 3 с.
+const sfxTimes = ep.overlays.filter((o) => o.kind === 'sfx').map((o) => o.from).sort((a, b) => a - b);
+const sfxCap = Math.max(1, Math.floor(totalSec / 10));
+if (sfxTimes.length > sfxCap) W(`SFX ${sfxTimes.length} на ${totalSec.toFixed(0)} с — перебор, потолок ~${sfxCap} (один на 10 с). Оставь только сильные места`);
+for (let k = 1; k < sfxTimes.length; k++) {
+  if (sfxTimes[k] - sfxTimes[k - 1] < 3) W(`SFX на ${sfxTimes[k - 1]}с и ${sfxTimes[k]}с ближе 3 с друг к другу — слипнутся в шум, один убрать`);
 }
 
 // два мема одновременно

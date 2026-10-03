@@ -1,5 +1,5 @@
 {
-  "_": "Опись звуков. Нужна, чтобы подбирать SFX под слово, не прослушивая каждый файл. duration — секунды, peak — пик в dBFS (0 = под потолком, такому нужен volume < 1). volume — рекомендуемая громкость в раскладке: озвучка в прокси держится около −20 dB mean, звук не должен её забивать.",
+  "_": "Опись звуков в public/sfx/. Склад паков — footage/sfx/, сюда копируются только отобранные с латинскими именами. duration — секунды. peak — пик в dBFS. hit — секунда, на которой стоит удар: если > 0.15, звук ставится с startFrom ≈ hit, иначе удар придёт после слова. tail — где звук фактически заканчивается (−30 dB от пика), окно to можно резать по нему. volume — рекомендуемая громкость: пик приведён к −6 dBFS, чуть выше пиков речи; озвучка в прокси около −20 dB mean. source — откуда файл в footage/sfx/.",
   "sfx": [
     {
       "file": "click.mp3",
@@ -14,7 +14,1050 @@
       ],
       "duration": 0.13,
       "peak": 0,
-      "volume": 0.5
+      "hit": 0.05,
+      "tail": 0.13,
+      "volume": 0.5,
+      "source": "от автора, «4 щелчок @nmntzh 2.mp3»"
+    },
+    {
+      "file": "whoosh-short.wav",
+      "desc": "короткий сухой вуш, как наклейку шлёпнули на кадр",
+      "tags": [
+        "появление",
+        "карточка",
+        "мем",
+        "влёт"
+      ],
+      "duration": 0.28,
+      "peak": -6.1,
+      "hit": 0,
+      "tail": 0.15,
+      "volume": 1,
+      "source": "Old Sport SFX Pack/Для появления (вуши)/короткий вуш.wav"
+    },
+    {
+      "file": "whoosh-short-2.wav",
+      "desc": "короткий вуш, вариант 2, чуть мягче",
+      "tags": [
+        "появление",
+        "карточка",
+        "мем",
+        "влёт"
+      ],
+      "duration": 0.24,
+      "peak": -6.2,
+      "hit": 0.05,
+      "tail": 0.15,
+      "volume": 1,
+      "source": "Old Sport SFX Pack/Для появления (вуши)/короткий вуш 2.wav"
+    },
+    {
+      "file": "whoosh-short-3.wav",
+      "desc": "короткий вуш, вариант 3, самый короткий",
+      "tags": [
+        "появление",
+        "карточка",
+        "мем",
+        "влёт"
+      ],
+      "duration": 0.2,
+      "peak": -6.1,
+      "hit": 0.05,
+      "tail": 0.15,
+      "volume": 1,
+      "source": "Old Sport SFX Pack/Для появления (вуши)/короткий вуш 3.wav"
+    },
+    {
+      "file": "whoosh.wav",
+      "desc": "вуш средней длины под смену кадра",
+      "tags": [
+        "переход",
+        "подсъём",
+        "смена кадра"
+      ],
+      "duration": 1.04,
+      "peak": -5.2,
+      "hit": 0.35,
+      "tail": 0.65,
+      "volume": 0.9,
+      "source": "Old Sport SFX Pack/Для Переходов (вуши)/вуш.wav"
+    },
+    {
+      "file": "whoosh-camera.wav",
+      "desc": "вуш с шорохом камеры, под переход на подсъём",
+      "tags": [
+        "переход",
+        "подсъём",
+        "камера"
+      ],
+      "duration": 1.2,
+      "peak": -5.2,
+      "hit": 0.65,
+      "tail": 0.95,
+      "volume": 0.9,
+      "source": "Old Sport SFX Pack/Для Переходов (вуши)/вуш с камерой.wav"
+    },
+    {
+      "file": "whoosh-camera-2.wav",
+      "desc": "вуш с камерой, вариант 2, короче",
+      "tags": [
+        "переход",
+        "подсъём",
+        "камера"
+      ],
+      "duration": 0.88,
+      "peak": -4.5,
+      "hit": 0.3,
+      "tail": 0.6,
+      "volume": 0.85,
+      "source": "Old Sport SFX Pack/Для Переходов (вуши)/вуш с камерой 2.wav"
+    },
+    {
+      "file": "whoosh-click.wav",
+      "desc": "вуш, который заканчивается щелчком: карточка прилетела и встала",
+      "tags": [
+        "появление",
+        "переход",
+        "щелчок",
+        "карточка"
+      ],
+      "duration": 0.88,
+      "peak": -0.7,
+      "hit": 0.1,
+      "tail": 0.5,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack/Для Переходов (вуши)/вуш с щелчком.wav"
+    },
+    {
+      "file": "whoosh-long.wav",
+      "desc": "затяжной вуш 2 с, удар на 1 с",
+      "tags": [
+        "переход",
+        "разгон",
+        "долгий"
+      ],
+      "duration": 2.16,
+      "peak": -4.1,
+      "hit": 1.05,
+      "tail": 1.85,
+      "volume": 0.8,
+      "source": "Old Sport SFX Pack/Для Переходов (вуши)/затяжной вуш.wav"
+    },
+    {
+      "file": "whoosh-city.wav",
+      "desc": "широкий кинематографичный вуш с гулом",
+      "tags": [
+        "переход",
+        "подсъём",
+        "кино",
+        "эпично"
+      ],
+      "duration": 4.36,
+      "peak": -1.1,
+      "hit": 0.65,
+      "tail": 4.1,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Dynamics/city_whoosh.wav"
+    },
+    {
+      "file": "whoosh-digital.wav",
+      "desc": "цифровой вуш 1.5 с, пролёт сообщения по схеме; со склада поднят на 12 dB, оригинал был −18 dBFS",
+      "tags": [
+        "вуш",
+        "цифровой",
+        "схема",
+        "сообщение",
+        "пролёт",
+        "kafka",
+        "перебивка"
+      ],
+      "duration": 1.48,
+      "peak": -6.1,
+      "hit": 0.46,
+      "tail": 0.96,
+      "volume": 0.9,
+      "source": "Old Sport SFX Pack/Для появления (вуши)/диджитал вуш.wav"
+    },
+    {
+      "file": "tap.wav",
+      "desc": "тактильный щелчок, как отклик кнопки в телефоне",
+      "tags": [
+        "клик",
+        "кнопка",
+        "интерфейс",
+        "счётчик",
+        "эмодзи"
+      ],
+      "duration": 0.2,
+      "peak": -1.4,
+      "hit": 0,
+      "tail": 0.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/тактильный щелчок.wav"
+    },
+    {
+      "file": "mouse-click.wav",
+      "desc": "клик мышью",
+      "tags": [
+        "клик",
+        "мышь",
+        "кнопка",
+        "интерфейс"
+      ],
+      "duration": 0.24,
+      "peak": -1.8,
+      "hit": 0,
+      "tail": 0.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Клавиатура - мышь/мышь клик 3.wav"
+    },
+    {
+      "file": "key.wav",
+      "desc": "одно нажатие клавиши",
+      "tags": [
+        "клавиша",
+        "клавиатура",
+        "ввод",
+        "код"
+      ],
+      "duration": 0.16,
+      "peak": -1.4,
+      "hit": 0,
+      "tail": 0.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Клавиатура - мышь/клавиатура соло.wav"
+    },
+    {
+      "file": "typing.wav",
+      "desc": "печать на клавиатуре 3 с",
+      "tags": [
+        "печать",
+        "клавиатура",
+        "код",
+        "работа",
+        "деплой"
+      ],
+      "duration": 3.08,
+      "peak": -0.6,
+      "hit": 0.4,
+      "tail": 3.08,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack/Клавиатура - мышь/клавиатура (печать).wav"
+    },
+    {
+      "file": "clicks.wav",
+      "desc": "серия щелчков",
+      "tags": [
+        "щелчки",
+        "переключение",
+        "список",
+        "перечисление"
+      ],
+      "duration": 0.6,
+      "peak": 0,
+      "hit": 0.15,
+      "tail": 0.45,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Фото - щелчки/щелчки.wav"
+    },
+    {
+      "file": "clicks-2.wav",
+      "desc": "серия щелчков, вариант 2",
+      "tags": [
+        "щелчки",
+        "переключение",
+        "список"
+      ],
+      "duration": 0.52,
+      "peak": -1.3,
+      "hit": 0.25,
+      "tail": 0.5,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Фото - щелчки/щелчки2.wav"
+    },
+    {
+      "file": "shutter.wav",
+      "desc": "затвор фотоаппарата",
+      "tags": [
+        "фото",
+        "затвор",
+        "скриншот",
+        "снимок",
+        "стоп-кадр"
+      ],
+      "duration": 0.88,
+      "peak": -1.8,
+      "hit": 0.1,
+      "tail": 0.3,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Фото - щелчки/затвор 2.wav"
+    },
+    {
+      "file": "shutter-heavy.wav",
+      "desc": "весомый затвор с хвостом, под стоп-кадр или «зафиксировали»",
+      "tags": [
+        "фото",
+        "затвор",
+        "стоп-кадр",
+        "фиксация"
+      ],
+      "duration": 1.96,
+      "peak": 0,
+      "hit": 0.1,
+      "tail": 0.65,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Фото - щелчки/фото (весомый).wav"
+    },
+    {
+      "file": "notify.wav",
+      "desc": "уведомление с коротким хвостом",
+      "tags": [
+        "уведомление",
+        "сообщение",
+        "пуш",
+        "телефон"
+      ],
+      "duration": 1.36,
+      "peak": -1.5,
+      "hit": 0,
+      "tail": 0.25,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление.wav"
+    },
+    {
+      "file": "notify-2.wav",
+      "desc": "короткий тон уведомления",
+      "tags": [
+        "уведомление",
+        "счётчик",
+        "эмодзи",
+        "галочка"
+      ],
+      "duration": 0.28,
+      "peak": -1.3,
+      "hit": 0,
+      "tail": 0.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление 2.wav"
+    },
+    {
+      "file": "notify-3.wav",
+      "desc": "двойной тон уведомления, бодрый",
+      "tags": [
+        "уведомление",
+        "счётчик",
+        "эмодзи",
+        "пункт"
+      ],
+      "duration": 0.32,
+      "peak": -1.9,
+      "hit": 0,
+      "tail": 0.3,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление 3.wav"
+    },
+    {
+      "file": "notify-4.wav",
+      "desc": "уведомление, вариант 4, с мягким ударом",
+      "tags": [
+        "уведомление",
+        "сообщение",
+        "пуш"
+      ],
+      "duration": 0.52,
+      "peak": 0,
+      "hit": 0.05,
+      "tail": 0.15,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление 4.wav"
+    },
+    {
+      "file": "notify-5.wav",
+      "desc": "уведомление, вариант 5, восходящий",
+      "tags": [
+        "уведомление",
+        "успех",
+        "готово",
+        "счётчик"
+      ],
+      "duration": 0.72,
+      "peak": -0.4,
+      "hit": 0,
+      "tail": 0.4,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление 5.wav"
+    },
+    {
+      "file": "notify-6.wav",
+      "desc": "уведомление, вариант 6, тихое",
+      "tags": [
+        "уведомление",
+        "сообщение"
+      ],
+      "duration": 0.56,
+      "peak": -3.7,
+      "hit": 0.05,
+      "tail": 0.3,
+      "volume": 0.75,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление 6.wav"
+    },
+    {
+      "file": "notify-riser.wav",
+      "desc": "уведомление после короткого разгона, удар на 0.45 с",
+      "tags": [
+        "уведомление",
+        "разгон",
+        "важное",
+        "внимание"
+      ],
+      "duration": 2.16,
+      "peak": -1.9,
+      "hit": 0.45,
+      "tail": 1.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/Уведомление с разгоном.wav"
+    },
+    {
+      "file": "progress.wav",
+      "desc": "короткая шкала прогресса, дозагрузилось",
+      "tags": [
+        "прогресс",
+        "загрузка",
+        "готово",
+        "деплой",
+        "успех"
+      ],
+      "duration": 0.84,
+      "peak": 0,
+      "hit": 0.05,
+      "tail": 0.8,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Интерфейсы/Прогресс.wav"
+    },
+    {
+      "file": "error.wav",
+      "desc": "ошибка интерфейса с хвостом",
+      "tags": [
+        "ошибка",
+        "упало",
+        "не работает",
+        "баг",
+        "отказ"
+      ],
+      "duration": 2.2,
+      "peak": -1.2,
+      "hit": 0.1,
+      "tail": 0.8,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Интерфейсы/Еррор.wav"
+    },
+    {
+      "file": "error-2.wav",
+      "desc": "ошибка интерфейса, короче и жёстче",
+      "tags": [
+        "ошибка",
+        "упало",
+        "баг",
+        "отказ",
+        "нельзя"
+      ],
+      "duration": 1.36,
+      "peak": -0.2,
+      "hit": 0.15,
+      "tail": 0.55,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Интерфейсы/Еррор 2.wav"
+    },
+    {
+      "file": "glitch.wav",
+      "desc": "цифровой глитч",
+      "tags": [
+        "глитч",
+        "сбой",
+        "баг",
+        "ломается",
+        "прод"
+      ],
+      "duration": 1.36,
+      "peak": -2.5,
+      "hit": 0.2,
+      "tail": 1,
+      "volume": 0.65,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч.wav"
+    },
+    {
+      "file": "glitch-1.wav",
+      "desc": "глитч, вариант 1, удар на 0.3 с",
+      "tags": [
+        "глитч",
+        "сбой",
+        "баг"
+      ],
+      "duration": 1.04,
+      "peak": -1.6,
+      "hit": 0.3,
+      "tail": 0.6,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч 1.wav"
+    },
+    {
+      "file": "glitch-2.wav",
+      "desc": "глитч, вариант 2, мягче",
+      "tags": [
+        "глитч",
+        "сбой",
+        "помехи"
+      ],
+      "duration": 1.04,
+      "peak": -2.2,
+      "hit": 0.15,
+      "tail": 0.65,
+      "volume": 0.65,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч 2.wav"
+    },
+    {
+      "file": "glitch-4.wav",
+      "desc": "глитч, вариант 4, самый короткий и резкий",
+      "tags": [
+        "глитч",
+        "сбой",
+        "баг",
+        "упало"
+      ],
+      "duration": 0.68,
+      "peak": -0.7,
+      "hit": 0,
+      "tail": 0.55,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч 4.wav"
+    },
+    {
+      "file": "glitch-5.wav",
+      "desc": "глитч, вариант 5, нарастает к концу",
+      "tags": [
+        "глитч",
+        "сбой",
+        "разгон"
+      ],
+      "duration": 1.04,
+      "peak": -0.1,
+      "hit": 0.7,
+      "tail": 1.04,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч 5.wav"
+    },
+    {
+      "file": "glitch-dense.wav",
+      "desc": "плотный громкий глитч 2 с",
+      "tags": [
+        "глитч",
+        "сбой",
+        "всё сломалось",
+        "катастрофа"
+      ],
+      "duration": 2.08,
+      "peak": -2.5,
+      "hit": 0.1,
+      "tail": 1.55,
+      "volume": 0.65,
+      "source": "Old Sport SFX Pack/Глитчи/Глитч (плотный).wav"
+    },
+    {
+      "file": "paper.wav",
+      "desc": "шелест бумаги 3 с, удар на 1 с",
+      "tags": [
+        "бумага",
+        "документ",
+        "договор",
+        "резюме",
+        "отчёт"
+      ],
+      "duration": 2.88,
+      "peak": 0,
+      "hit": 1.05,
+      "tail": 2.55,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Бумага/бумага 1.wav"
+    },
+    {
+      "file": "paper-2.wav",
+      "desc": "короткий шелест листа",
+      "tags": [
+        "бумага",
+        "документ",
+        "лист",
+        "резюме"
+      ],
+      "duration": 0.72,
+      "peak": -6.3,
+      "hit": 0.1,
+      "tail": 0.65,
+      "volume": 1,
+      "source": "Old Sport SFX Pack/Бумага/бумага 2.wav"
+    },
+    {
+      "file": "riser.wav",
+      "desc": "разгон 3 с, удар в самом конце",
+      "tags": [
+        "разгон",
+        "напряжение",
+        "ожидание",
+        "перед ударом"
+      ],
+      "duration": 3.04,
+      "peak": 0,
+      "hit": 2.85,
+      "tail": 3,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Разгон.wav"
+    },
+    {
+      "file": "riser-2.wav",
+      "desc": "долгий разгон 9 с, удар на 6.6 с",
+      "tags": [
+        "разгон",
+        "напряжение",
+        "долгий"
+      ],
+      "duration": 9.36,
+      "peak": 0,
+      "hit": 6.6,
+      "tail": 8.4,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Разгон 2.wav"
+    },
+    {
+      "file": "riser-3.wav",
+      "desc": "разгон 7.5 с, удар на 5.4 с",
+      "tags": [
+        "разгон",
+        "напряжение"
+      ],
+      "duration": 7.48,
+      "peak": 0,
+      "hit": 5.35,
+      "tail": 6.35,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Разгон 3.wav"
+    },
+    {
+      "file": "impact.wav",
+      "desc": "удар с хвостом, удар на 0.5 с",
+      "tags": [
+        "удар",
+        "панчлайн",
+        "акцент",
+        "вывод"
+      ],
+      "duration": 5,
+      "peak": -3.8,
+      "hit": 0.5,
+      "tail": 2.55,
+      "volume": 0.8,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Импакт.wav"
+    },
+    {
+      "file": "impact-bell.wav",
+      "desc": "удар с колокольчиком, удар на 0.5 с",
+      "tags": [
+        "удар",
+        "акцент",
+        "озарение",
+        "идея"
+      ],
+      "duration": 5.48,
+      "peak": -2.7,
+      "hit": 0.5,
+      "tail": 2.15,
+      "volume": 0.7,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Импакт (колокольчик).wav"
+    },
+    {
+      "file": "impact-4.wav",
+      "desc": "тяжёлый удар с долгим хвостом",
+      "tags": [
+        "удар",
+        "панчлайн",
+        "тяжело",
+        "провал"
+      ],
+      "duration": 9,
+      "peak": -4.8,
+      "hit": 0.5,
+      "tail": 5.9,
+      "volume": 0.85,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Импакт 4.wav"
+    },
+    {
+      "file": "impact-5.wav",
+      "desc": "тяжёлый удар, вариант 5",
+      "tags": [
+        "удар",
+        "панчлайн",
+        "тяжело"
+      ],
+      "duration": 9.48,
+      "peak": -4.8,
+      "hit": 0.5,
+      "tail": 4.85,
+      "volume": 0.85,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Импакт 5.wav"
+    },
+    {
+      "file": "reveal.wav",
+      "desc": "ревилер: разгон 1.6 с и раскрытие",
+      "tags": [
+        "раскрытие",
+        "разгон",
+        "вот оно",
+        "ответ"
+      ],
+      "duration": 4.88,
+      "peak": -1.3,
+      "hit": 1.65,
+      "tail": 4.15,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack/Разгоны+удары/Ревилер.wav"
+    },
+    {
+      "file": "impact-sub.wav",
+      "desc": "сабовый удар, удар сразу, хвост 3.6 с",
+      "tags": [
+        "удар",
+        "панчлайн",
+        "бас",
+        "тяжело",
+        "вывод"
+      ],
+      "duration": 5.96,
+      "peak": -0.2,
+      "hit": 0.05,
+      "tail": 3.65,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack 2/Dynamics/impact_sub.wav"
+    },
+    {
+      "file": "impact-brass.wav",
+      "desc": "удар с медью, кинематографичный",
+      "tags": [
+        "удар",
+        "эпично",
+        "трейлер",
+        "драма"
+      ],
+      "duration": 9.44,
+      "peak": -1.4,
+      "hit": 0.6,
+      "tail": 5.4,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack 2/Dynamics/impact_brass.wav"
+    },
+    {
+      "file": "impact-echo.wav",
+      "desc": "удар с эхом",
+      "tags": [
+        "удар",
+        "эхо",
+        "пустота",
+        "тишина"
+      ],
+      "duration": 8.28,
+      "peak": -1.9,
+      "hit": 0.55,
+      "tail": 3.4,
+      "volume": 0.6,
+      "source": "Old Sport SFX Pack 2/Dynamics/impact_echo.wav"
+    },
+    {
+      "file": "drum-hits.wav",
+      "desc": "серия барабанных ударов, первый на 1.5 с",
+      "tags": [
+        "барабаны",
+        "удары",
+        "перечисление",
+        "ритм"
+      ],
+      "duration": 7.64,
+      "peak": -0.4,
+      "hit": 1.5,
+      "tail": 6.1,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack 2/Dynamics/drum_hits.wav"
+    },
+    {
+      "file": "angel-choir.wav",
+      "desc": "ангельский хор, сарказм про идеал",
+      "tags": [
+        "хор",
+        "идеальный",
+        "святой",
+        "сарказм",
+        "просветление"
+      ],
+      "duration": 4.04,
+      "peak": -0.5,
+      "hit": 0.15,
+      "tail": 2.1,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Dynamics/angel_choir.wav"
+    },
+    {
+      "file": "applause.wav",
+      "desc": "аплодисменты 9 с, брать кусок через startFrom",
+      "tags": [
+        "аплодисменты",
+        "сарказм",
+        "молодец",
+        "браво",
+        "достижение"
+      ],
+      "duration": 8.96,
+      "peak": 0,
+      "hit": 0.6,
+      "tail": 8.45,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack 2/Items/applause.wav"
+    },
+    {
+      "file": "door.wav",
+      "desc": "хлопок двери",
+      "tags": [
+        "дверь",
+        "ушёл",
+        "уволился",
+        "хлопнул",
+        "конец"
+      ],
+      "duration": 1.44,
+      "peak": -0.6,
+      "hit": 0,
+      "tail": 1.4,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Items/door.wav"
+    },
+    {
+      "file": "car.wav",
+      "desc": "короткий сигнал машины",
+      "tags": [
+        "машина",
+        "сигнал",
+        "стоп",
+        "эй"
+      ],
+      "duration": 0.8,
+      "peak": -2.3,
+      "hit": 0,
+      "tail": 0.4,
+      "volume": 0.65,
+      "source": "Old Sport SFX Pack 2/Items/car.wav"
+    },
+    {
+      "file": "phone.wav",
+      "desc": "телефонный звонок 6 с",
+      "tags": [
+        "телефон",
+        "звонок",
+        "созвон",
+        "менеджер"
+      ],
+      "duration": 5.92,
+      "peak": -5.4,
+      "hit": 0,
+      "tail": 4.2,
+      "volume": 0.95,
+      "source": "Old Sport SFX Pack 2/Items/phone.wav"
+    },
+    {
+      "file": "dog.wav",
+      "desc": "лай собаки",
+      "tags": [
+        "собака",
+        "лай",
+        "злой",
+        "охрана"
+      ],
+      "duration": 4.04,
+      "peak": -1.1,
+      "hit": 0,
+      "tail": 3.3,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Items/dog.wav"
+    },
+    {
+      "file": "cat.wav",
+      "desc": "мяуканье 12 с, брать кусок через startFrom",
+      "tags": [
+        "кот",
+        "мяу",
+        "жалобно"
+      ],
+      "duration": 12.56,
+      "peak": -4.6,
+      "hit": 2.9,
+      "tail": 12.45,
+      "volume": 0.85,
+      "source": "Old Sport SFX Pack 2/Items/cat.wav"
+    },
+    {
+      "file": "owl.wav",
+      "desc": "уханье совы",
+      "tags": [
+        "сова",
+        "ночь",
+        "ночной деплой",
+        "тишина"
+      ],
+      "duration": 1.92,
+      "peak": -10.7,
+      "hit": 0.35,
+      "tail": 1.85,
+      "volume": 1,
+      "source": "Old Sport SFX Pack 2/Items/owl.wav"
+    },
+    {
+      "file": "money.wav",
+      "desc": "пересчёт купюр 5 с",
+      "tags": [
+        "деньги",
+        "зарплата",
+        "купюры",
+        "оклад",
+        "дорого"
+      ],
+      "duration": 5.48,
+      "peak": -2.2,
+      "hit": 0.2,
+      "tail": 2.15,
+      "volume": 0.65,
+      "source": "Old Sport SFX Pack 2/Items/money1.wav"
+    },
+    {
+      "file": "money-2.wav",
+      "desc": "короткий шелест денег",
+      "tags": [
+        "деньги",
+        "зарплата",
+        "купюры",
+        "оклад"
+      ],
+      "duration": 1.4,
+      "peak": -1.1,
+      "hit": 0,
+      "tail": 1.15,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Items/money2.wav"
+    },
+    {
+      "file": "money-3.wav",
+      "desc": "монеты, короткий звон",
+      "tags": [
+        "деньги",
+        "монеты",
+        "мелочь",
+        "копейки"
+      ],
+      "duration": 1.4,
+      "peak": -0.4,
+      "hit": 0,
+      "tail": 0.9,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack 2/Items/money3.wav"
+    },
+    {
+      "file": "glass.wav",
+      "desc": "звон бокала, короткий",
+      "tags": [
+        "бокал",
+        "тост",
+        "праздник",
+        "отметить",
+        "звон"
+      ],
+      "duration": 2.16,
+      "peak": -0.2,
+      "hit": 0,
+      "tail": 0.3,
+      "volume": 0.5,
+      "source": "Old Sport SFX Pack 2/Items/glasswine.wav"
+    },
+    {
+      "file": "lighter.wav",
+      "desc": "щелчок зажигалки, тихий",
+      "tags": [
+        "зажигалка",
+        "огонь",
+        "поджечь",
+        "прод горит"
+      ],
+      "duration": 3.04,
+      "peak": -0.9,
+      "hit": 0.05,
+      "tail": 2.65,
+      "volume": 0.55,
+      "source": "Old Sport SFX Pack 2/Items/lighter.wav"
+    },
+    {
+      "file": "police.wav",
+      "desc": "полицейская сирена 27 с, брать кусок через startFrom",
+      "tags": [
+        "сирена",
+        "полиция",
+        "тревога",
+        "проверка",
+        "алерт"
+      ],
+      "duration": 26.88,
+      "peak": -8.6,
+      "hit": 0.25,
+      "tail": 23.45,
+      "volume": 1,
+      "source": "Old Sport SFX Pack 2/Items/police.wav"
+    },
+    {
+      "file": "train.wav",
+      "desc": "гудок поезда",
+      "tags": [
+        "поезд",
+        "гудок",
+        "уехал",
+        "поехали"
+      ],
+      "duration": 3.76,
+      "peak": -3.2,
+      "hit": 0.2,
+      "tail": 2.7,
+      "volume": 0.7,
+      "source": "Old Sport SFX Pack 2/Items/train1.wav"
+    },
+    {
+      "file": "train-2.wav",
+      "desc": "поезд проезжает",
+      "tags": [
+        "поезд",
+        "мимо",
+        "пронеслось"
+      ],
+      "duration": 4.6,
+      "peak": -5.1,
+      "hit": 0.05,
+      "tail": 4.1,
+      "volume": 0.9,
+      "source": "Old Sport SFX Pack 2/Items/train2.wav"
+    },
+    {
+      "file": "bicycle.wav",
+      "desc": "велосипедный звонок, тихий",
+      "tags": [
+        "велосипед",
+        "звонок",
+        "дзынь"
+      ],
+      "duration": 2.88,
+      "peak": -10.1,
+      "hit": 0.3,
+      "tail": 1.25,
+      "volume": 1,
+      "source": "Old Sport SFX Pack 2/Items/bicycle.wav"
     }
   ]
 }

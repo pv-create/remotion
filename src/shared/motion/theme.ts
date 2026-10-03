@@ -10,9 +10,11 @@
 import {Easing, spring, type SpringConfig} from 'remotion';
 import {loadFont as loadMontserrat} from '@remotion/google-fonts/Montserrat';
 import {loadFont as loadPlex} from '@remotion/google-fonts/IBMPlexSans';
+import {loadFont as loadPlexMono} from '@remotion/google-fonts/IBMPlexMono';
 
 const montserrat = loadMontserrat().fontFamily;
 const plex = loadPlex().fontFamily;
+const plexMono = loadPlexMono().fontFamily;
 
 export const FPS = 30;
 export const WIDTH = 1080;
@@ -38,9 +40,16 @@ export const safe = {
 
 export const grid = {step: 24, opacity: 0.05} as const;
 
+/**
+ * ОТКЛОНЕНИЕ ОТ ХЕНДОФФА. В пакете нет моноширинного шрифта, а перебивки с
+ * документами (JSON, .proto в grpc_rest) без него не читаются как код.
+ * Взят IBM Plex Mono — пара к IBM Plex Sans из системы; кегль `type.code`
+ * ниже lead, чтобы четыре строки влезали в карточку схемы.
+ */
 export const font = {
   display: montserrat,
   body: plex,
+  mono: plexMono,
 } as const;
 
 export const type = {
@@ -61,6 +70,8 @@ export const type = {
     textTransform: 'uppercase',
   },
   lead: {fontFamily: font.body, fontWeight: 400, fontSize: 42, lineHeight: 1.35},
+  /** см. отклонение у `font.mono` */
+  code: {fontFamily: font.mono, fontWeight: 500, fontSize: 24, lineHeight: 1.35},
   caption: {
     fontFamily: font.display,
     fontWeight: 800,

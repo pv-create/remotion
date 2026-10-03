@@ -14,6 +14,12 @@ import {Sticker} from '../motion/components/Sticker';
 import {Captions} from '../motion/components/Captions';
 import {Lanes} from './components/Lanes';
 import {Pools} from './components/Pools';
+import {Flow} from './components/Flow';
+import {Queue} from './components/Queue';
+import {Log} from './components/Log';
+import {Rpc} from './components/Rpc';
+import {Docs} from './components/Docs';
+import {Race} from './components/Race';
 import type {CutSpec} from './types';
 
 const CONTENT_WIDTH = WIDTH - safe.side * 2;
@@ -81,7 +87,52 @@ export const Cut: React.FC<{spec: CutSpec}> = ({spec}) => {
             height: SCHEMA_HEIGHT,
           }}
         >
-          {spec.pools ? (
+          {spec.race ? (
+            <Race
+              {...spec.race}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.flow ? (
+            <Flow
+              tiers={spec.flow.tiers}
+              steps={spec.flow.steps}
+              packets={spec.flow.packets}
+              dwell={spec.flow.dwell}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.docs ? (
+            <Docs
+              {...spec.docs}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.rpc ? (
+            <Rpc
+              {...spec.rpc}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.queue ? (
+            <Queue
+              {...spec.queue}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.log ? (
+            <Log
+              {...spec.log}
+              tone={spec.tone}
+              width={CONTENT_WIDTH}
+              height={SCHEMA_HEIGHT}
+            />
+          ) : spec.pools ? (
             <Pools
               caller={spec.pools.caller}
               pools={spec.pools.pools}

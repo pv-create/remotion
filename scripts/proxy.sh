@@ -13,7 +13,8 @@ VF="${2:-}"
 DIR="src/features/$FEAT"
 [ -d "$DIR" ] || { echo "нет фичи $DIR" >&2; exit 1; }
 
-SRC=$(ls "$DIR"/source/*.{mp4,mov,MOV,MP4} 2>/dev/null | head -1 || true)
+# самый свежий по mtime: второй экспорт автора побеждает первый, старый не удаляем
+SRC=$(ls -t "$DIR"/source/*.{mp4,mov,MOV,MP4} 2>/dev/null | head -1 || true)
 [ -n "$SRC" ] || { echo "в $DIR/source/ нет видео" >&2; exit 1; }
 
 BASE=$(basename "${SRC%.*}")

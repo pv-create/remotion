@@ -27,7 +27,11 @@ export const Reel: React.FC<{episode: Episode}> = ({episode}) => {
             name={`${item.kind}: ${item.note}`}
           >
             {item.kind === 'sfx' ? (
-              <Audio src={staticFile(item.src)} volume={item.volume ?? SFX_VOLUME} />
+              <Audio
+                src={staticFile(item.src)}
+                startFrom={secToFrames(item.startFrom ?? 0)}
+                volume={item.volume ?? SFX_VOLUME}
+              />
             ) : item.kind === 'cut' ? (
               <Cut spec={item.spec} />
             ) : item.kind === 'broll' ? (

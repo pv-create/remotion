@@ -121,11 +121,24 @@ export function probeImage(file) {
   return {width: w, height: h};
 }
 
+/**
+ * Опись картинок: мемы из pictures/memes.json плюс логотипы из
+ * pictures/logos/logos.json. Ключ — имя файла, у лого своя папка, поэтому
+ * имена не пересекаются.
+ */
 export function loadMemes() {
-  const f = path.join(PUBLIC, 'pictures', 'memes.json');
-  if (!fs.existsSync(f)) return new Map();
-  const j = JSON.parse(fs.readFileSync(f, 'utf8'));
-  return new Map((j.memes ?? []).map((m) => [m.file, m]));
+  const lists = [
+    [path.join(PUBLIC, 'pictures', 'memes.json'), 'memes'],
+    [path.join(PUBLIC, 'pictures', 'logos', 'logos.json'), 'logos'],
+    [path.join(PUBLIC, 'pictures', 'got', 'got.json'), 'got'],
+  ];
+  const map = new Map();
+  for (const [f, key] of lists) {
+    if (!fs.existsSync(f)) continue;
+    const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+    for (const m of j[key] ?? []) map.set(m.file, m);
+  }
+  return map;
 }
 
 export function loadSfx() {

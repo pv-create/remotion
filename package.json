@@ -15,7 +15,18 @@
     "render:tester_new": "remotion render TesterNew out/tester_new.mp4 --codec=h264 --crf=18",
     "render:autoscaling": "remotion render Autoscaling out/autoscaling.mp4 --codec=h264 --crf=18",
     "render:bcend_vospitanie": "remotion render BcendVospitanie out/bcend_vospitanie.mp4 --codec=h264 --crf=18",
-    "render:bulkhead": "remotion render Bulkhead out/bulkhead.mp4 --codec=h264 --crf=18"
+    "render:bulkhead": "remotion render Bulkhead out/bulkhead.mp4 --codec=h264 --crf=18",
+    "render:resume": "remotion render Resume out/resume.mp4 --codec=h264 --crf=18",
+    "render:got": "remotion render Got out/got.mp4 --codec=h264 --crf=18",
+    "render:news_01": "remotion render News01 out/news_01.mp4 --codec=h264 --crf=18",
+    "render:kafka_rabbit": "remotion render KafkaRabbit out/kafka_rabbit.mp4 --codec=h264 --crf=18",
+    "render:grpc_rest": "remotion render GrpcRest out/grpc_rest.mp4 --codec=h264 --crf=18",
+    "render:got2": "remotion render Got2 out/got2.mp4 --codec=h264 --crf=18",
+    "render:requests": "remotion render Requests out/requests.mp4 --codec=h264 --crf=18",
+    "render:idempotency": "remotion render Idempotency out/idempotency.mp4 --codec=h264 --crf=18",
+    "render:it_unknown": "remotion render ItUnknown out/it_unknown.mp4 --codec=h264 --crf=18",
+    "render:sqrs": "remotion render Sqrs out/sqrs.mp4 --codec=h264 --crf=18",
+    "render:mok_sobes": "remotion render MokSobes out/mok_sobes.mp4 --codec=h264 --crf=18"
   },
   "dependencies": {
     "@remotion/cli": "latest",
